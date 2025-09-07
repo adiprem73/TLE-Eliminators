@@ -1,5 +1,9 @@
 {
     "files.associations": {
-        "iostream": "cpp"
-    }
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "cmath": "cpp"
+    },
+    "editor.fontFamily": "Fira Code, monospace",
+    "editor.fontLigatures": true
 }

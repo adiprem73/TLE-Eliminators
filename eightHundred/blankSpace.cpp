@@ -18,36 +18,34 @@ using namespace std;
 const int INF = 1e9;
 const ll MOD = 1e9+7;
 
-// where do i stop the loop??
-// should not og above 5 operations.why??
-// n=lenght of x and m= length of x... and n*m <=25. worst case scenario: n=1 and m=25. then also 1+1=2, 2+2=4, 4+4=8, 8+8=16 and 16+16 =32. so we indeed reach well above 25. hence we only need to go till 5 operations
-
 int main() {
     FAST_IO;
     int t;
     cin>>t;
     while(t--){
-        int n,m;
-        cin>>n>>m;
-        string s,x;
-        cin>>x;
-        cin>>s;
-        int cnt=0;
-        bool flag=false;
-        while(cnt<=5){
-            // cout<<x<<endl;
-            if(x.find(s)!=string::npos){
-                cout<<cnt<<endl; 
-                flag=true;
-                break;
+        int n;
+        cin>>n;
+        vint nums;
+        for(int i=0;i<n;i++){
+            int x;
+            cin>>x;
+            nums.push_back(x);
+        }
+        int maxi=INT_MIN;
+        int curr=0;
+        // bool flag=false;
+        for (int i = 0; i < n; i++)
+        {
+            if(nums[i]==0){
+                curr++;
+                // flag=true;
             }
-            cnt++;
-            x=x+x;
+            else if(nums[i]==1){
+                curr=0;
+            }
+            maxi = max(maxi, curr);
         }
-        if(flag==false){
-            cout<<-1<<endl;
-        }
-
+        cout<<maxi<<endl;
     }
     return 0;
 }
