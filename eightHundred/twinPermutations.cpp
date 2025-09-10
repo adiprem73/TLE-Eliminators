@@ -27,21 +27,6 @@ using namespace std;
 const int INF = 1e9;
 const ll MOD = 1e9 + 7;
 
-/*
-arguement is:
-if a+b+2<=n or a==b==n then yes.... else no
-
-case 1:
-how a+b+2
-
-we wish p to be = {1, 2, 3, ... a -------------  n-b+1 ..... n-2, n-1, n}
-we wish q to be = {1, 2, 3, ... a -------------  n-b+1 ..... n-2, n-1, n}
-
-in the middle whjere we need to differentiate the two permutaitons the length must be greater thatn opr equal to 2 since we need it to have the abiulity to be differentiable. a single digits cannot differentiate the two permutations
-
-
-*/
-
 int main()
 {
     FAST_IO;
@@ -49,16 +34,20 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n, a, b;
-        cin >> n >> a >> b;
-        if ((n == a && a == b) || (a + b + 2 <= n))
+        int n;
+        cin >> n;
+        vint nums(n);
+        for (int i = 0; i < n; i++)
         {
-            cout << "yes" << endl;
+            cin >> nums[i];
         }
-        else
+        int s = n + 1;
+        vint ans(n);
+        for (int i = 0; i < n; i++)
         {
-            cout << "no" << endl;
+            ans[i] = s - nums[i];
         }
+        vprint(ans);
     }
     return 0;
 }

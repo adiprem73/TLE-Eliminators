@@ -18,58 +18,54 @@ using namespace std;
 const int INF = 1e9;
 const ll MOD = 1e9+7;
 
+/*
+PROPERTIES OF XOR
+1. a xor a =0
+2. a xor 0 =a
+3. a xor b xor c= a xor c xor b
 
-// the number of 1s should be more than -1s
-// even number of -1s
+final : a1 xor x xor a2 xor x a3 xor x ....
+        a1 xor a2 xor a3 xor a4....   xor x xor x xor x xor x xor (n times)
 
+        if n is odd:
+            a1 xpr a2 xor a3 xor ... xor x
+
+            take x= a1 xor a2 xor a3 xor a4 .... n items
+
+            then it will become x xor x which will ive zero
+        if n is even:
+            a1 xor a2 xor a3 xor a4 xor....
+
+            THIS CASE IS SOLVABLE EASILY
+
+        */
 
 int main() {
     FAST_IO;
     int t;
-    cin>>t;
+    cin >> t;
     while(t--){
         int n;
         cin>>n;
-        vint nums;
-        int nn=0,np=0;
+        vint nums(n);
+        int temp=0;
         for(int i=0;i<n;i++){
             int x;
             cin>>x;
-            if(x==1)np++;
-            if(x==-1)nn++;
+            temp=temp^x;
             nums.push_back(x);
         }
-        // cout<<"nn : "<<nn<<endl;
-        // cout<<"np : "<<np<<endl;
-        if(np>nn){
-            if(nn%2==0){
-                cout<<0<<endl;
-                continue;
-            }else{
-                cout<<1<<endl;
-                continue;
-            }
-        }else{
-            int cnt=0;
-            while(nn>np){
-                nn--;
-                np++;
-                cnt++; //count each as one conversion
-            }
-            //keep on converting the negatives to the positives
 
-            if (nn % 2 == 0)
-            {
-                cout << cnt << endl;
-                continue;
-            }
-            else
-            {
-                cout << cnt+1 << endl;
-                continue;
+        if(n%2!=0){
+            cout<<temp<<endl;
+        }
+        else{
+            if(temp==0){
+                cout<<1<<endl;
+            }else{
+                cout<<-1<<endl;
             }
         }
-        
     }
     return 0;
 }

@@ -34,21 +34,15 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n, k;
+        ll n, k;
         cin >> n >> k;
-        if (n == k)
+        if (n%2==0 || (n-k)%2==0)
         {
             cout << "yes" << endl;
-            continue;
-        }
-        if (n % 2 == 0)
-        {
-            cout << "yes" << endl;
-            continue;
         }
         else
         {
-            
+            cout << "no" << endl;
         }
     }
     return 0;
