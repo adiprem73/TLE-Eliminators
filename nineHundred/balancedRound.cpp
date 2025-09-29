@@ -23,15 +23,33 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        ll a,b,n;
-        cin>>a>>b>>n;
-        ll ans=0;
+        int n,k;
+        cin>>n>>k;
+        vint nums;
         for(int i=0;i<n;i++){
-            ll x;
+            int x;
             cin>>x;
-            ans+=min(x, a-1);
+            nums.push_back(x);
         }
-        cout<<ans+b<<endl;
+        if(n==1){
+            cout<<0<<endl;
+            continue;
+        }
+        int cnt=0;
+        int maxCount=INT_MIN;
+        sort(nums.begin(), nums.end());
+        for(int i=0;i<n-1;i++){
+            if(nums[i+1]-nums[i]<=k){
+                cnt++;
+                
+            }else{
+                cnt=0;
+            }
+            maxCount = max(maxCount, cnt);
+        }
+        // cout<<"n : "<<n<<endl;
+        int ans = n-maxCount-1;
+        cout<< ans <<endl;
     }
     return 0;
 }

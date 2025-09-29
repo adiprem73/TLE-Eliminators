@@ -18,20 +18,23 @@ using namespace std;
 const int INF = 1e9;
 const ll MOD = 1e9+7;
 
+/*
+now, the thing is that we cannot find the actual interval inside the 1 to n. but if we start from 1 and take increasing by 1 and checking we will get an interval lets say 1 to s. now if all of the 1 to s elements divide n and since thwy are the smallest they will also be dividing the elelements of the actual longest sequence.
+
+*/
+
 int main() {
     FAST_IO;
     int t;
     cin >> t;
     while(t--){
-        ll a,b,n;
-        cin>>a>>b>>n;
-        ll ans=0;
-        for(int i=0;i<n;i++){
-            ll x;
-            cin>>x;
-            ans+=min(x, a-1);
+        ll n;
+        cin>>n;
+        ll i=1;
+        while(n%i==0){
+            i++;
         }
-        cout<<ans+b<<endl;
+        cout<< i-1<<endl;
     }
     return 0;
 }

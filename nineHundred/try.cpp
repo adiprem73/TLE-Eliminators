@@ -20,19 +20,7 @@ const ll MOD = 1e9+7;
 
 int main() {
     FAST_IO;
-    int t;
-    cin >> t;
-    while(t--){
-        ll a,b,n;
-        cin>>a>>b>>n;
-        ll ans=0;
-        for(int i=0;i<n;i++){
-            ll x;
-            cin>>x;
-            ans+=min(x, a-1);
-        }
-        cout<<ans+b<<endl;
-    }
+    cout<<(1^(2^(3^0)));
     return 0;
 }
 //by ad73prem
