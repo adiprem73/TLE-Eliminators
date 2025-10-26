@@ -18,47 +18,30 @@ using namespace std;
 const int INF = 1e9;
 const ll MOD = 1e9+7;
 
-// the trick herew is to precompute the running sums
-
 int main() {
     FAST_IO;
     int t;
     cin >> t;
     while(t--){
-        int n,q;
-        cin>>n>>q;
+        int n;
+        cin>>n;
         vint nums;
-        vint sums;
-        int sum=0;
         for(int i=0;i<n;i++){
             int x;
             cin>>x;
-            sum+=x;
             nums.push_back(x);
-            sums.push_back(sum);
-        }
-        // vprint(sums);
-        for(int i=0;i<q;i++){
-            int l, r, k;
-            cin >> l >> r >> k;
-            int sum1;
-            if(l==1){
-                sum1= sums[n-1]- sums[r-1];
-            }
-            else{
-                sum1= sums[n-1]- sums[r-1]+sums[l-2];
-            }
-            
-            // cout<<sum1<<endl;
-            int sumk= k*(r-l+1);
-            int sum= sumk+sum1;
-            if(sum%2==0){
-                cout<<"no"<<endl;
-            }else{
-                cout<<"yes"<<endl;
+        }  
+        for(int i=0;i<n-1;i++){
+            if(nums[i]==1 ){
+                nums[i]++;
             }
         }
-        
+        for(int i=0;i<n-1;i++){
+            if(nums[i+1]%nums[i]==0){
+                nums[i+1]++;
+            }
+        }
+        vprint(nums);
     }
     return 0;
 }
