@@ -20,36 +20,7 @@ const ll MOD = 1e9+7;
 
 int main() {
     FAST_IO;
-    int tt;
-    cin >> tt;
-    while(tt--){
-        string s, t;
-        cin>>s>>t;
-        unordered_map<char,int> ft;
-        for(char ch: t){
-            ft[ch]++;
-        }
-
-        for (int i=s.length()-1;i>=0;i--){
-            if(ft[s[i]]!=0){
-                ft[s[i]]--;
-            }
-            else{
-                s[i]='.';
-            }
-        }
-        string ans="";
-        for(char ch: s){
-            if(ch!='.'){
-                ans+=ch;
-            }
-        }
-        if(ans==t){
-            cout<<"yes"<<endl;
-        }else{
-            cout<<"no"<<endl;
-        }
-    }
+    
     return 0;
 }
 //by ad73prem
