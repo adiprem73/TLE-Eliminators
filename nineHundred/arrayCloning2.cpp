@@ -18,47 +18,43 @@ using namespace std;
 const int INF = 1e9;
 const ll MOD = 1e9+7;
 
-// the trick herew is to precompute the running sums
-
 int main() {
     FAST_IO;
     int t;
     cin >> t;
     while(t--){
-        int n,q;
-        cin>>n>>q;
-        vint nums;
-        vint sums;
-        int sum=0;
+        ll n;
+        cin>>n;
+        vector<ll> nums;
         for(int i=0;i<n;i++){
-            int x;
+            ll x;
             cin>>x;
-            sum+=x;
             nums.push_back(x);
-            sums.push_back(sum);
         }
-        // vprint(sums);
-        for(int i=0;i<q;i++){
-            int l, r, k;
-            cin >> l >> r >> k;
-            int sum1;
-            if(l==1){
-                sum1= sums[n-1]- sums[r-1];
-            }
-            else{
-                sum1= sums[n-1]- sums[r-1]+sums[l-2];
-            }
-            
-            // cout<<sum1<<endl;
-            int sumk= k*(r-l+1);
-            int sum= sumk+sum1;
-            if(sum%2==0){
-                cout<<"no"<<endl;
+        ll op=0;
+        ll currfreq=0;
+        map<ll,ll> mp;
+        for(auto it: nums){
+            mp[it]++;
+        }
+
+        for(auto it: mp){
+            currfreq=max(currfreq, it.second);
+        }
+
+        while(currfreq<n){
+            op++;
+
+            if(currfreq*2<=n){
+                op += currfreq;
+                currfreq*=2;
+                
             }else{
-                cout<<"yes"<<endl;
+                op+= (n-currfreq);
+                currfreq=n;
             }
         }
-        
+        cout<< op<<"\n";
     }
     return 0;
 }
