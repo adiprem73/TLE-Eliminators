@@ -18,40 +18,32 @@ using namespace std;
 const int INF = 1e9;
 const ll MOD = 1e9+7;
 
+bool hasDecimalDigits(double num) {
+    return num != floor(num);
+}
+
 int main() {
     FAST_IO;
     int t;
     cin >> t;
     while(t--){
-        int n;
-        cin>>n;
-        vint nums;
-        unordered_map<int, int> mp;
-        for(int i=0;i<n;i++){
-            int x;
-            
-            cin>>x;
-            mp[x]++;
-            nums.push_back(x);
+        ll a,b,c;
+        cin>>a>>b>>c;
+        double newA= (2.0*b-c);
+        double newB= (a+c)/2.0;
+        double newC= (2.0*b-a);
+        // cout<<newA<<" "<<newB<<" "<<newC<<endl;
+        if(newA>0 && !hasDecimalDigits(newA) && (int)newA%a==0){
+            cout<<"yes"<<endl;
+        }else if(newB>0 && !hasDecimalDigits(newB) && (int)newB%b==0){
+            cout<<"yes"<<endl;
+        }else if(newC>0 && !hasDecimalDigits(newC) && (int)newC%c==0){
+            cout<<"yes"<<endl;
+        }else{
+            cout<<"no"<<endl;
         }
-        // cout<<"hello"<<endl;
-        int operation=0;
-        int fmax=INT_MIN;
-        for(auto it: mp){
-            if(it.second>fmax){
-                fmax=it.second;
-            }
-        }
-        
-        int diff= n-fmax;
-        operation+=(diff/2)*3;
-        int remainder= diff%2;
-        if(remainder){
-            operation+=2;
-        }
-        cout<<diff<<endl;
-        cout<<operation<<endl;
     }
     return 0;
 }
+        
 //by ad73prem

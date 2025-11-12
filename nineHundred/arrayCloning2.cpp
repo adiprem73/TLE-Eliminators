@@ -23,34 +23,38 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        int n;
+        ll n;
         cin>>n;
-        vint nums;
-        unordered_map<int, int> mp;
+        vector<ll> nums;
         for(int i=0;i<n;i++){
-            int x;
-            
+            ll x;
             cin>>x;
-            mp[x]++;
             nums.push_back(x);
         }
-        // cout<<"hello"<<endl;
-        int operation=0;
-        int fmax=INT_MIN;
+        ll op=0;
+        ll currfreq=0;
+        map<ll,ll> mp;
+        for(auto it: nums){
+            mp[it]++;
+        }
+
         for(auto it: mp){
-            if(it.second>fmax){
-                fmax=it.second;
+            currfreq=max(currfreq, it.second);
+        }
+
+        while(currfreq<n){
+            op++;
+
+            if(currfreq*2<=n){
+                op += currfreq;
+                currfreq*=2;
+                
+            }else{
+                op+= (n-currfreq);
+                currfreq=n;
             }
         }
-        
-        int diff= n-fmax;
-        operation+=(diff/2)*3;
-        int remainder= diff%2;
-        if(remainder){
-            operation+=2;
-        }
-        cout<<diff<<endl;
-        cout<<operation<<endl;
+        cout<< op<<"\n";
     }
     return 0;
 }
