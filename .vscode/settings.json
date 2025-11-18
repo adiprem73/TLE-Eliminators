@@ -2,7 +2,11 @@
     "files.associations": {
         "iostream": "cpp",
         "ostream": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "chrono": "cpp",
+        "span": "cpp"
     },
     "editor.fontFamily": "Fira Code, monospace",
     "editor.fontLigatures": true

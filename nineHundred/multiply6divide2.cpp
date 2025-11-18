@@ -16,29 +16,16 @@ using namespace std;
 #define mll map<ll,ll>
 
 const int INF = 1e9;
-const ll MOD = 1e9+7;
+const ll MOD = 1e9+7;  
 
 int main() {
     FAST_IO;
     int t;
     cin >> t;
     while(t--){
-        ll n,x;
-        cin>>n>>x;
-        vector<ll> nums;
-        for(ll i=0;i<n;i++){
-            ll val;
-            cin>>val;
-            nums.push_back(val);
-        }
-        ll ansMax=0;
-        ll sum = accumulate(nums.begin(), nums.end(), 0LL);
-        ll ansMin = (sum+x-1)/x;
-        for (ll i = 0; i < n; i++)
-        {
-            ansMax+=(nums[i]+x-1) / x;
-        }
-        cout<<ansMin<<" "<<ansMax<<endl;
+        ll n;
+        cin>>n;
+        cout<<n/6<<" "<<n%6;
     }
     return 0;
 }
