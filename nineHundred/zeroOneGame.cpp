@@ -16,32 +16,27 @@ using namespace std;
 #define mll map<ll,ll>
 
 const int INF = 1e9;
-const ll MOD = 1e9+7;  
+const ll MOD = 1e9+7;
 
 int main() {
     FAST_IO;
     int t;
     cin >> t;
     while(t--){
-        ll n;
-        cin>>n;
-        // vector<int> factors;
-        int cnt6=0;
-        int cnt3=0;
-        while(n%6==0){
-            n=n/6;
-            cnt6++;
+        string s;
+        cin>>s;
+        int count=0;
+        int n=s.length();
+        ll cnt0=0;
+        ll cnt1=0;
+        for(int i=0;i<n;i++){
+            if(s[i]=='0')cnt0++;
+            if(s[i]=='1')cnt1++;
         }
-        while(n%3==0){
-            n=n/3;
-            cnt3++;
-        }
-        if(n==1){
-            cout<<cnt6+ (cnt3*2)<<endl;
-        }else {
-            cout<<-1<<endl;
-        }
-
+        ll num= min(cnt0, cnt1);
+        // cout<<"num : "<<num<<endl;
+        if(num%2==0)cout<<"NET"<<endl;
+        else cout<<"DA"<<endl;
     }
     return 0;
 }

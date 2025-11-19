@@ -16,32 +16,32 @@ using namespace std;
 #define mll map<ll,ll>
 
 const int INF = 1e9;
-const ll MOD = 1e9+7;  
+const ll MOD = 1e9+7;
 
 int main() {
     FAST_IO;
-    int t;
+    ll t;
     cin >> t;
     while(t--){
         ll n;
         cin>>n;
-        // vector<int> factors;
-        int cnt6=0;
-        int cnt3=0;
-        while(n%6==0){
-            n=n/6;
-            cnt6++;
-        }
-        while(n%3==0){
-            n=n/3;
-            cnt3++;
-        }
-        if(n==1){
-            cout<<cnt6+ (cnt3*2)<<endl;
-        }else {
-            cout<<-1<<endl;
+        ll k;
+        cin>>k;
+        vector<ll> nums(n*k);
+        for(int i=0;i<n*k;i++){
+            cin>>nums[i];
         }
 
+        sort(nums.begin(), nums.end());
+        // vprint(nums);
+
+        ll pointer= n*k;
+        ll sum=0;
+        while(k--){
+            pointer-= (n/2+1);
+            sum+=nums[pointer];
+        }
+        cout<<sum<<endl;
     }
     return 0;
 }
